@@ -147,26 +147,40 @@ Với tất cả tình yêu của anh,"""
 
     st.markdown('<p class="signature">Anh của em ❤️</p>', unsafe_allow_html=True)
        # Phần ảnh kỷ niệm - HIỂN THỊ SẴN (không cần upload)
-    st.markdown('<h2 style="text-align: center; color: #c0392b; font-family: Dancing Script, cursive; font-size: 36px; margin-top: 80px;">Kỷ niệm đẹp của chúng mình</h2>', unsafe_allow_html=True)
-
-    # Danh sách tên file ảnh bạn đã chuẩn bị sẵn (thêm/bớt tùy ý)
-    photo_files = [
-        # thêm bao nhiêu cũng được, chỉ cần file tồn tại trong thư mục
-    ]
-
-    if photo_files:
-        st.markdown('<div class="photo-gallery">', unsafe_allow_html=True)
-        for photo in photo_files:
-            try:
-                st.markdown('<div class="photo-item">', unsafe_allow_html=True)
-                st.image(photo, use_column_width=True)
-                st.markdown('</div>', unsafe_allow_html=True)
-            except:
-                pass  # nếu file không tồn tại thì bỏ qua, không lỗi
-        st.markdown('</div>', unsafe_allow_html=True)
-    else:
-        st.info("Chưa có ảnh kỷ niệm nào được thêm.")
-
+      # Nút bấm dễ thương dẫn đến Google Drive kỷ niệm
+    st.markdown("""
+    <div style="text-align: center; margin-top: 100px;">
+        <h2 style="color: #c0392b; font-family: 'Dancing Script', cursive; font-size: 42px; margin-bottom: 40px;">
+            🌸 Kỉ Niệm Tụi Mình 🌸
+        </h2>
+        
+        <a href="THÊM_LINK_GGDRIVE_TẠI_ĐÂY" target="_blank">
+            <button style="
+                background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+                color: #d63031;
+                font-family: 'Georgia', serif;
+                font-size: 24px;
+                font-weight: bold;
+                padding: 20px 50px;
+                border: none;
+                border-radius: 50px;
+                box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+            "
+            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 30px rgba(255,105,180,0.5)';"
+            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 20px rgba(255,105,180,0.3)';">
+                💕 Bấm vào đây để xem kỷ niệm đẹp của tụi mình nha em yêu 💕
+            </button>
+        </a>
+        
+        <p style="margin-top: 30px; font-size: 18px; color: #7f4f24; font-style: italic;">
+            Anh đã chuẩn bị rất nhiều bất ngờ trong này đó... ❤️
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)  # Đóng letter-container
 
 else:
