@@ -146,40 +146,46 @@ Với tất cả tình yêu của anh,"""
     st.markdown(f'<p class="content">{message}</p>', unsafe_allow_html=True)
 
     st.markdown('<p class="signature">Anh của em ❤️</p>', unsafe_allow_html=True)
-       # Phần ảnh kỷ niệm - HIỂN THỊ SẴN (không cần upload)
-      # Nút bấm dễ thương dẫn đến Google Drive kỷ niệm
+    # Nút bấm dễ thương dẫn đến Google Drive kỷ niệm (sửa lỗi hover, đẹp hơn)
     st.markdown("""
     <div style="text-align: center; margin-top: 100px;">
-        <h2 style="color: #c0392b; font-family: 'Dancing Script', cursive; font-size: 42px; margin-bottom: 40px;">
+        <h2 style="color: #ff6b6b; font-family: 'Dancing Script', cursive; font-size: 48px; margin-bottom: 50px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
             🌸 Kỉ Niệm Tụi Mình 🌸
         </h2>
         
-        <a href="https://drive.google.com/drive/folders/1hhBw6-6FoYdQcq5nVcaOk4kdD6Qv0r28?usp=sharing" target="_blank">
-            <button style="
-                background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-                color: #d63031;
-                font-family: 'Georgia', serif;
-                font-size: 24px;
-                font-weight: bold;
-                padding: 20px 50px;
-                border: none;
-                border-radius: 50px;
-                box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
-                cursor: pointer;
-                transition: all 0.3s ease;
-                text-decoration: none;
-                display: inline-block;
-            "
-            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 12px 30px rgba(255,105,180,0.5)';"
-            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 20px rgba(255,105,180,0.3)';">
+        <a href="https://drive.google.com/drive/folders/1hhBw6-6FoYdQcq5nVcaOk4kdD6Qv0r28?usp=drive_link" target="_blank" style="text-decoration: none;">
+            <div class="cute-button">
                 💕 Bấm vào đây để xem kỷ niệm đẹp của tụi mình nha em yêu 💕
-            </button>
+            </div>
         </a>
         
-        <p style="margin-top: 30px; font-size: 18px; color: #7f4f24; font-style: italic;">
+        <p style="margin-top: 40px; font-size: 20px; color: #7f4f24; font-style: italic;">
             Anh đã chuẩn bị rất nhiều bất ngờ trong này đó... ❤️
         </p>
     </div>
+
+    <style>
+        .cute-button {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            color: #c0392b;
+            font-family: 'Georgia', serif;
+            font-size: 26px;
+            font-weight: bold;
+            padding: 25px 60px;
+            border: none;
+            border-radius: 60px;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: inline-block;
+            text-align: center;
+        }
+        .cute-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.6);
+            background: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+        }
+    </style>
     """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)  # Đóng letter-container
 
