@@ -5,7 +5,7 @@ import time
 # -----------------------------
 # Thời điểm mở thư: 00:00 ngày 7/1/2026 UTC
 # -----------------------------
-TARGET_TIME = 1767744000  # Unix timestamp đúng
+TARGET_TIME = 1767744000
 PASSWORD = "cunnucheomap"
 
 # -----------------------------
@@ -14,7 +14,7 @@ PASSWORD = "cunnucheomap"
 st.set_page_config(page_title="Bức Thư Dành Cho Em", layout="centered")
 
 # -----------------------------
-# CSS gốc + style nút cute
+# CSS đẹp như thư tay + style nút cute
 # -----------------------------
 st.markdown("""
 <style>
@@ -84,7 +84,7 @@ st.markdown("""
         max-width: 400px;
         margin: 30px auto;
     }
-    /* Style nút kỷ niệm siêu cute */
+    /* Nút cute với hover */
     .cute-button {
         background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
         color: #c0392b;
@@ -109,12 +109,10 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Font chữ tay đẹp
+# Font chữ tay
 st.markdown('<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">', unsafe_allow_html=True)
 
-# -----------------------------
 # Logic thời gian + password
-# -----------------------------
 current_time = int(datetime.utcnow().timestamp())
 time_reached = current_time >= TARGET_TIME
 
@@ -122,7 +120,6 @@ if 'unlocked' not in st.session_state:
     st.session_state.unlocked = False
 
 if st.session_state.unlocked or time_reached:
-    # ==================== HIỂN THỊ BỨC THƯ ====================
     st.markdown("""
     <div class="letter-container">
         <h1 class="title">💌 Dành riêng cho em yêu của anh</h1>
@@ -147,14 +144,16 @@ Với tất cả tình yêu của anh,"""
     st.markdown(f'<p class="content">{message}</p>', unsafe_allow_html=True)
     st.markdown('<p class="signature">Anh của em ❤️</p>', unsafe_allow_html=True)
 
-    # ==================== NÚT KỶ NIỆM (ĐÃ THÊM LINK CỦA BẠN) ====================
-    st.markdown("""
+    # ==================== NÚT KỶ NIỆM ĐÃ FIX LỖI HOÀN TOÀN ====================
+    drive_link = "https://drive.google.com/drive/folders/1hhBw6-6FoYdQcq5nVcaOk4kdD6Qv0r28?usp=drive_link"
+
+    st.markdown(f"""
     <div style="text-align: center; margin-top: 100px;">
         <h2 style="color: #c0392b; font-family: 'Dancing Script', cursive; font-size: 48px; margin-bottom: 50px;">
             🌸 Kỉ Niệm Tụi Mình 🌸
         </h2>
         
-        <a href="https://drive.google.com/drive/folders/1hhBw6-6FoYdQcq5nVcaOk4kdD6Qv0r28?usp=drive_link" target="_blank">
+        <a href="{drive_link}" target="_blank" style="text-decoration: none;">
             <div class="cute-button">
                 💕 Bấm vào đây để xem kỷ niệm đẹp của tụi mình nha em yêu 💕
             </div>
@@ -168,7 +167,6 @@ Với tất cả tình yêu của anh,"""
     """, unsafe_allow_html=True)
 
 else:
-    # ==================== MÀN HÌNH CHỜ + PASSWORD ====================
     remaining = TARGET_TIME - current_time
     days = remaining // 86400
     hours = (remaining % 86400) // 3600
