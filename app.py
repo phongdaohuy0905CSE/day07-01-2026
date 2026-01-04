@@ -100,7 +100,7 @@ st.markdown('<link href="https://fonts.googleapis.com/css2?family=Dancing+Script
 current_time = int(datetime.utcnow().timestamp())
 remaining = TARGET_TIME - current_time
 
-if remaining > 0:
+if remaining < 0:
     # Chưa đến ngày mở thư → Đếm ngược đẹp
     days = remaining // 86400
     hours = (remaining % 86400) // 3600
