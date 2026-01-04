@@ -146,20 +146,23 @@ Với tất cả tình yêu của anh,"""
     st.markdown(f'<p class="content">{message}</p>', unsafe_allow_html=True)
 
     st.markdown('<p class="signature">Anh của em ❤️</p>', unsafe_allow_html=True)
-
-    # Phần ảnh kỷ niệm
-    st.markdown('<h2 style="text-align: center; color: #c0392b; font-family: Dancing Script, cursive; font-size: 36px; margin-top: 80px;">Kỷ niệm đẹp của chúng mình</h2>', unsafe_allow_html=True)
-
        # Phần ảnh kỷ niệm - HIỂN THỊ SẴN (không cần upload)
     st.markdown('<h2 style="text-align: center; color: #c0392b; font-family: Dancing Script, cursive; font-size: 36px; margin-top: 80px;">Kỷ niệm đẹp của chúng mình</h2>', unsafe_allow_html=True)
 
     # Danh sách tên file ảnh bạn đã chuẩn bị sẵn (thêm/bớt tùy ý)
     photo_files = [
-        "anh1.jpg",     # thay bằng tên file thật của bạn
-        "anh2.jpg",
-        "anh3.png",
-        "anh4.jpeg",
-        "anh5.webp",
+          'D:\Git and Github\project\images\anh (1).jpg'
+        , 'D:\Git and Github\project\images\anh (2).jpg'
+        , 'D:\Git and Github\project\images\anh (3).jpg'
+        , 'D:\Git and Github\project\images\anh (4).jpg'
+        , 'D:\Git and Github\project\images\anh (5).jpg'
+        , 'D:\Git and Github\project\images\anh (6).jpg'
+        , 'D:\Git and Github\project\images\anh (7).jpg'
+        , 'D:\Git and Github\project\images\anh (8).jpg'
+        , 'D:\Git and Github\project\images\anh (9).jpg'
+        , 'D:\Git and Github\project\images\anh (10).jpg'
+        , 'D:\Git and Github\project\images\anh (11).jpg'
+        , 'D:\Git and Github\project\images\anh (12).jpg'
         # thêm bao nhiêu cũng được, chỉ cần file tồn tại trong thư mục
     ]
 
