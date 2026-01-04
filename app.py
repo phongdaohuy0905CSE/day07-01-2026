@@ -5,7 +5,7 @@ import time
 # -----------------------------
 # Thời điểm mở thư: 00:00 ngày 7/1/2026 UTC
 # -----------------------------
-TARGET_TIME = 1767744000  # 2026-01-07 00:00:00 UTC
+TARGET_TIME = 1767744000
 PASSWORD = "cunnucheomap"
 
 # -----------------------------
@@ -14,7 +14,7 @@ PASSWORD = "cunnucheomap"
 st.set_page_config(page_title="Bức Thư Dành Cho Em", layout="centered")
 
 # -----------------------------
-# CSS đẹp như thư tay thật
+# CSS đẹp như thư tay
 # -----------------------------
 st.markdown("""
 <style>
@@ -87,7 +87,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Font chữ viết tay
+# Font chữ tay
 st.markdown('<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">', unsafe_allow_html=True)
 
 # -----------------------------
@@ -125,38 +125,31 @@ Với tất cả tình yêu của anh,"""
     st.markdown(f'<p class="content">{message}</p>', unsafe_allow_html=True)
     st.markdown('<p class="signature">Anh của em ❤️</p>', unsafe_allow_html=True)
 
-    # ==================== NÚT KỶ NIỆM SIÊU CUTE & ỔN ĐỊNH ====================
-    drive_link = "https://drive.google.com/drive/folders/1hhBw6-6FoYdQcq5nVcaOk4kdD6Qv0r28?usp=drive_link"
-
-    st.markdown(f"""
+    # ==================== CHỈ 1 NÚT DUY NHẤT, ĐƠN GIẢN, CUTE, KHÔNG LỖI ====================
+    st.markdown("""
     <div style="text-align: center; margin-top: 100px;">
         <h2 style="color: #c0392b; font-family: 'Dancing Script', cursive; font-size: 48px; margin-bottom: 50px;">
             🌸 Kỉ Niệm Tụi Mình 🌸
         </h2>
-
-        <a href="{drive_link}" target="_blank" style="text-decoration: none;">
-            <button style="
-                background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-                color: #c0392b;
-                font-family: Georgia, serif;
-                font-size: 26px;
-                font-weight: bold;
-                padding: 25px 60px;
-                border: none;
-                border-radius: 60px;
-                box-shadow: 0 10px 25px rgba(255,105,180,0.4);
-                cursor: pointer;
-                transition: all 0.4s ease;
-            "
-            onmouseover="this.style.transform='scale(1.08)'; this.style.boxShadow='0 15px 35px rgba(255,105,180,0.6)'"
-            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(255,105,180,0.4)'">
-                💕 Bấm vào đây để xem kỷ niệm đẹp của tụi mình nha em yêu 💕
-            </button>
-        </a>
-
-        <p style="margin-top: 40px; font-size: 20px; color: #7f4f24; font-style: italic;">
-            Anh đã chuẩn bị rất nhiều bất ngờ trong này đó... ❤️
-        </p>
+        
+        <div style="margin: 40px 0;">
+            <a href="https://drive.google.com/drive/folders/1hhBw6-6FoYdQcq5nVcaOk4kdD6Qv0r28?usp=drive_link" target="_blank" style="text-decoration: none;">
+                <button style="
+                    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+                    color: white;
+                    font-family: Georgia, serif;
+                    font-size: 28px;
+                    font-weight: bold;
+                    padding: 20px 60px;
+                    border: none;
+                    border-radius: 60px;
+                    box-shadow: 0 8px 20px rgba(255,105,180,0.4);
+                    cursor: pointer;
+                ">
+                    💕 Xem Kỷ Niệm Tụi Mình 💕
+                </button>
+            </a>
+        </div>
     </div>
     </div>
     """, unsafe_allow_html=True)
