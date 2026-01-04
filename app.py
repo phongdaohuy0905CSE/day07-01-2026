@@ -5,7 +5,7 @@ import time
 # -----------------------------
 # Thời điểm mở thư: 00:00 ngày 7/1/2026 UTC
 # -----------------------------
-TARGET_TIME = 1767744000
+TARGET_TIME = 1767744000  # 2026-01-07 00:00:00 UTC
 PASSWORD = "cunnucheomap"
 
 # -----------------------------
@@ -14,7 +14,7 @@ PASSWORD = "cunnucheomap"
 st.set_page_config(page_title="Bức Thư Dành Cho Em", layout="centered")
 
 # -----------------------------
-# CSS đẹp như thư tay + style nút cute
+# CSS đẹp như thư tay thật
 # -----------------------------
 st.markdown("""
 <style>
@@ -84,35 +84,15 @@ st.markdown("""
         max-width: 400px;
         margin: 30px auto;
     }
-    /* Nút cute với hover */
-    .cute-button {
-        background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-        color: #c0392b;
-        font-family: 'Georgia', serif;
-        font-size: 26px;
-        font-weight: bold;
-        padding: 25px 60px;
-        border: none;
-        border-radius: 60px;
-        box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
-        cursor: pointer;
-        transition: all 0.4s ease;
-        display: inline-block;
-        text-align: center;
-        text-decoration: none;
-    }
-    .cute-button:hover {
-        transform: scale(1.08);
-        box-shadow: 0 15px 35px rgba(255, 105, 180, 0.6);
-        background: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
-    }
 </style>
 """, unsafe_allow_html=True)
 
-# Font chữ tay
+# Font chữ viết tay
 st.markdown('<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">', unsafe_allow_html=True)
 
+# -----------------------------
 # Logic thời gian + password
+# -----------------------------
 current_time = int(datetime.utcnow().timestamp())
 time_reached = current_time >= TARGET_TIME
 
@@ -120,6 +100,7 @@ if 'unlocked' not in st.session_state:
     st.session_state.unlocked = False
 
 if st.session_state.unlocked or time_reached:
+    # ==================== HIỂN THỊ BỨC THƯ ====================
     st.markdown("""
     <div class="letter-container">
         <h1 class="title">💌 Dành riêng cho em yêu của anh</h1>
@@ -144,7 +125,7 @@ Với tất cả tình yêu của anh,"""
     st.markdown(f'<p class="content">{message}</p>', unsafe_allow_html=True)
     st.markdown('<p class="signature">Anh của em ❤️</p>', unsafe_allow_html=True)
 
-    # ==================== NÚT KỶ NIỆM ĐÃ FIX LỖI HOÀN TOÀN ====================
+    # ==================== NÚT KỶ NIỆM SIÊU CUTE & ỔN ĐỊNH ====================
     drive_link = "https://drive.google.com/drive/folders/1hhBw6-6FoYdQcq5nVcaOk4kdD6Qv0r28?usp=drive_link"
 
     st.markdown(f"""
@@ -152,13 +133,27 @@ Với tất cả tình yêu của anh,"""
         <h2 style="color: #c0392b; font-family: 'Dancing Script', cursive; font-size: 48px; margin-bottom: 50px;">
             🌸 Kỉ Niệm Tụi Mình 🌸
         </h2>
-        
+
         <a href="{drive_link}" target="_blank" style="text-decoration: none;">
-            <div class="cute-button">
+            <button style="
+                background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+                color: #c0392b;
+                font-family: Georgia, serif;
+                font-size: 26px;
+                font-weight: bold;
+                padding: 25px 60px;
+                border: none;
+                border-radius: 60px;
+                box-shadow: 0 10px 25px rgba(255,105,180,0.4);
+                cursor: pointer;
+                transition: all 0.4s ease;
+            "
+            onmouseover="this.style.transform='scale(1.08)'; this.style.boxShadow='0 15px 35px rgba(255,105,180,0.6)'"
+            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 25px rgba(255,105,180,0.4)'">
                 💕 Bấm vào đây để xem kỷ niệm đẹp của tụi mình nha em yêu 💕
-            </div>
+            </button>
         </a>
-        
+
         <p style="margin-top: 40px; font-size: 20px; color: #7f4f24; font-style: italic;">
             Anh đã chuẩn bị rất nhiều bất ngờ trong này đó... ❤️
         </p>
@@ -167,6 +162,7 @@ Với tất cả tình yêu của anh,"""
     """, unsafe_allow_html=True)
 
 else:
+    # ==================== MÀN HÌNH CHỜ + PASSWORD ====================
     remaining = TARGET_TIME - current_time
     days = remaining // 86400
     hours = (remaining % 86400) // 3600
