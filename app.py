@@ -160,7 +160,7 @@ else:
     st.markdown(f"""
     <div class="letter-container">
         <h1 class="title">💌 Bức Thư Bí Mật</h1>
-        <p class="waiting-message">Em yêu dấu,</p>
+        <p class="waiting-message">Cheo yêu dấu,</p>
         <p class="waiting-message">Anh đã chuẩn bị một điều đặc biệt dành riêng cho em...</p>
         <p class="waiting-message">Hãy chờ thêm chút nữa nhé ❤️</p>
         <div class="countdown">
