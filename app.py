@@ -151,18 +151,6 @@ Với tất cả tình yêu của anh,"""
 
     # Danh sách tên file ảnh bạn đã chuẩn bị sẵn (thêm/bớt tùy ý)
     photo_files = [
-          'D:\Git and Github\project\images\anh (1).jpg'
-        , 'D:\Git and Github\project\images\anh (2).jpg'
-        , 'D:\Git and Github\project\images\anh (3).jpg'
-        , 'D:\Git and Github\project\images\anh (4).jpg'
-        , 'D:\Git and Github\project\images\anh (5).jpg'
-        , 'D:\Git and Github\project\images\anh (6).jpg'
-        , 'D:\Git and Github\project\images\anh (7).jpg'
-        , 'D:\Git and Github\project\images\anh (8).jpg'
-        , 'D:\Git and Github\project\images\anh (9).jpg'
-        , 'D:\Git and Github\project\images\anh (10).jpg'
-        , 'D:\Git and Github\project\images\anh (11).jpg'
-        , 'D:\Git and Github\project\images\anh (12).jpg'
         # thêm bao nhiêu cũng được, chỉ cần file tồn tại trong thư mục
     ]
 
