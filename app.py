@@ -5,7 +5,7 @@ import time
 # -----------------------------
 # Thời điểm mở thư: 00:00 ngày 7/1/2026 UTC
 # -----------------------------
-TARGET_TIME = 1767744000  # Unix timestamp đúng
+TARGET_TIME = 1767744000
 PASSWORD = "cunnucheomap"
 
 # -----------------------------
@@ -14,7 +14,7 @@ PASSWORD = "cunnucheomap"
 st.set_page_config(page_title="Bức Thư Dành Cho Em", layout="centered")
 
 # -----------------------------
-# CSS đẹp như thư tay thật
+# CSS đẹp như thư tay + responsive cho mobile
 # -----------------------------
 st.markdown("""
 <style>
@@ -79,17 +79,38 @@ st.markdown("""
     .waiting-message {
         font-size: 28px;
         text-align: center;
-        color: #7f4f24;
+        color: #000000;  /* Đổi thành đen đậm */
         font-style: italic;
+        font-weight: bold;
     }
     .password-box {
         max-width: 400px;
         margin: 30px auto;
     }
+
+    /* Responsive tựa đề trên mobile (iPhone 16 Pro Max và các màn nhỏ) */
+    @media (max-width: 600px) {
+        .title {
+            font-size: 36px !important;  /* Nhỏ lại để vừa màn hình mobile */
+            margin-bottom: 30px;
+        }
+        .letter-container {
+            padding: 40px 30px;  /* Giảm padding cho mobile thoải mái hơn */
+        }
+        .content {
+            font-size: 19px;
+        }
+        .countdown {
+            font-size: 36px;
+        }
+        .waiting-message {
+            font-size: 24px;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# Font chữ viết tay đẹp
+# Font chữ tay
 st.markdown('<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">', unsafe_allow_html=True)
 
 # -----------------------------
@@ -102,13 +123,7 @@ if 'unlocked' not in st.session_state:
     st.session_state.unlocked = False
 
 if st.session_state.unlocked or time_reached:
-    # ==================== HIỂN THỊ BỨC THƯ ĐẸP LUNG LINH ====================
-    st.markdown("""
-    <div class="letter-container">
-        <h1 class="title">💌 Dành riêng cho em yêu của anh</h1>
-        <p class="date">Ngày 7 tháng 1 năm 2026</p>
-    """, unsafe_allow_html=True)
-
+    # ==================== HIỂN THỊ BỨC THƯ ====================
     letter_content = """Em yêu dấu của anh,
 
 Từ rất lâu rồi, anh đã muốn viết cho em những dòng này, nhưng anh chờ mãi đến một ngày thật đặc biệt – ngày mà tình yêu của chúng mình thêm trọn vẹn và sâu đậm hơn.
@@ -123,13 +138,16 @@ Anh yêu em, yêu nhiều lắm, hôm nay, ngày mai, và mãi mãi về sau... 
 
 Với tất cả tình yêu và nhớ nhung,"""
 
-    # Cho phép chỉnh sửa thư nếu muốn (giữ tính năng cũ)
-    message = st.text_area("", value=letter_content, height=700, label_visibility="collapsed", key="letter_content")
-    st.markdown(f'<p class="content">{message}</p>', unsafe_allow_html=True)
+    edited_content = st.text_area("", value=letter_content, height=700, label_visibility="collapsed", key="letter_content")
 
-    st.markdown('<p class="signature">Cún Nù ❤️</p>', unsafe_allow_html=True)
-
-    st.markdown('</div>', unsafe_allow_html=True)  # Đóng container
+    st.markdown(f"""
+    <div class="letter-container">
+        <h1 class="title">💌 Dành riêng cho em yêu của anh</h1>
+        <p class="date">Ngày 7 tháng 1 năm 2026</p>
+        <p class="content">{edited_content}</p>
+        <p class="signature">Cún Nù ❤️</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 else:
     # ==================== MÀN HÌNH CHỜ + PASSWORD ====================
