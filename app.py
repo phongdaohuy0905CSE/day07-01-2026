@@ -1,11 +1,12 @@
 import streamlit as st
 from datetime import datetime
+import time
 
 # -----------------------------
 # Thời điểm mở thư: 00:00 ngày 7/1/2026 UTC
 # -----------------------------
-TARGET_TIME = 1767744000  # Unix timestamp: 2026-01-07 00:00:00 UTC
-PASSWORD = "cunnucheomap"  # Mật khẩu để mở sớm
+TARGET_TIME = 1767744000  # Unix timestamp đúng
+PASSWORD = "cunnucheomap"
 
 # -----------------------------
 # Streamlit config
@@ -13,7 +14,7 @@ PASSWORD = "cunnucheomap"  # Mật khẩu để mở sớm
 st.set_page_config(page_title="Bức Thư Dành Cho Em", layout="centered")
 
 # -----------------------------
-# CSS đẹp như thư tay thật
+# CSS gốc + style nút cute
 # -----------------------------
 st.markdown("""
 <style>
@@ -79,42 +80,49 @@ st.markdown("""
         color: #7f4f24;
         font-style: italic;
     }
-    .photo-gallery {
-        margin-top: 60px;
-        columns: 2;
-        column-gap: 20px;
-    }
-    .photo-item {
-        break-inside: avoid;
-        margin-bottom: 20px;
-        border: 8px solid #fff;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        border-radius: 5px;
-        overflow: hidden;
-    }
     .password-box {
         max-width: 400px;
         margin: 30px auto;
     }
+    /* Style nút kỷ niệm siêu cute */
+    .cute-button {
+        background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+        color: #c0392b;
+        font-family: 'Georgia', serif;
+        font-size: 26px;
+        font-weight: bold;
+        padding: 25px 60px;
+        border: none;
+        border-radius: 60px;
+        box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+        cursor: pointer;
+        transition: all 0.4s ease;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+    }
+    .cute-button:hover {
+        transform: scale(1.08);
+        box-shadow: 0 15px 35px rgba(255, 105, 180, 0.6);
+        background: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# Font chữ viết tay đẹp (Google Fonts)
+# Font chữ tay đẹp
 st.markdown('<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">', unsafe_allow_html=True)
 
 # -----------------------------
-# Kiểm tra thời gian và mật khẩu
+# Logic thời gian + password
 # -----------------------------
 current_time = int(datetime.utcnow().timestamp())
 time_reached = current_time >= TARGET_TIME
 
-# Sử dụng session_state để lưu trạng thái đã mở bằng password
 if 'unlocked' not in st.session_state:
     st.session_state.unlocked = False
 
-# Nếu đã unlock bằng password hoặc đã đến giờ → hiển thị thư
 if st.session_state.unlocked or time_reached:
-    # Hiển thị bức thư đầy đủ
+    # ==================== HIỂN THỊ BỨC THƯ ====================
     st.markdown("""
     <div class="letter-container">
         <h1 class="title">💌 Dành riêng cho em yêu của anh</h1>
@@ -135,25 +143,18 @@ Anh yêu em, hôm nay, ngày mai, và mãi mãi về sau.
 
 Với tất cả tình yêu của anh,"""
 
-    message = st.text_area(
-        "",
-        value=default_letter,
-        height=600,
-        label_visibility="collapsed",
-        key="letter_content"
-    )
-
+    message = st.text_area("", value=default_letter, height=600, label_visibility="collapsed", key="letter_content")
     st.markdown(f'<p class="content">{message}</p>', unsafe_allow_html=True)
-
     st.markdown('<p class="signature">Anh của em ❤️</p>', unsafe_allow_html=True)
-    # Nút bấm dễ thương dẫn đến Google Drive kỷ niệm (sửa lỗi hover, đẹp hơn)
+
+    # ==================== NÚT KỶ NIỆM (ĐÃ THÊM LINK CỦA BẠN) ====================
     st.markdown("""
     <div style="text-align: center; margin-top: 100px;">
-        <h2 style="color: #ff6b6b; font-family: 'Dancing Script', cursive; font-size: 48px; margin-bottom: 50px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+        <h2 style="color: #c0392b; font-family: 'Dancing Script', cursive; font-size: 48px; margin-bottom: 50px;">
             🌸 Kỉ Niệm Tụi Mình 🌸
         </h2>
         
-        <a href="https://drive.google.com/drive/folders/1hhBw6-6FoYdQcq5nVcaOk4kdD6Qv0r28?usp=drive_link" target="_blank" style="text-decoration: none;">
+        <a href="https://drive.google.com/drive/folders/1hhBw6-6FoYdQcq5nVcaOk4kdD6Qv0r28?usp=drive_link" target="_blank">
             <div class="cute-button">
                 💕 Bấm vào đây để xem kỷ niệm đẹp của tụi mình nha em yêu 💕
             </div>
@@ -163,34 +164,11 @@ Với tất cả tình yêu của anh,"""
             Anh đã chuẩn bị rất nhiều bất ngờ trong này đó... ❤️
         </p>
     </div>
-
-    <style>
-        .cute-button {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-            color: #c0392b;
-            font-family: 'Georgia', serif;
-            font-size: 26px;
-            font-weight: bold;
-            padding: 25px 60px;
-            border: none;
-            border-radius: 60px;
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
-            cursor: pointer;
-            transition: all 0.4s ease;
-            display: inline-block;
-            text-align: center;
-        }
-        .cute-button:hover {
-            transform: scale(1.08);
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.6);
-            background: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
-        }
-    </style>
+    </div>
     """, unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)  # Đóng letter-container
 
 else:
-    # Chưa đến giờ và chưa unlock → hiển thị màn hình chờ + ô nhập password
+    # ==================== MÀN HÌNH CHỜ + PASSWORD ====================
     remaining = TARGET_TIME - current_time
     days = remaining // 86400
     hours = (remaining % 86400) // 3600
@@ -210,7 +188,6 @@ else:
     </div>
     """, unsafe_allow_html=True)
 
-    # Ô nhập mật khẩu để mở sớm
     st.markdown('<div class="password-box">', unsafe_allow_html=True)
     password_input = st.text_input("Nếu em có mật khẩu đặc biệt, hãy nhập ở đây để mở thư ngay nhé 💕", type="password")
     if st.button("Mở thư"):
@@ -222,7 +199,5 @@ else:
             st.error("Mật khẩu chưa đúng rồi, thử lại nhé em yêu 😘")
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # Auto refresh mỗi giây để cập nhật countdown
-    import time
     time.sleep(1)
     st.rerun()
