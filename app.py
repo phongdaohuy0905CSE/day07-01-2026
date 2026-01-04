@@ -5,6 +5,7 @@ from datetime import datetime
 # Thời điểm mở thư: 00:00 ngày 7/1/2026 UTC
 # -----------------------------
 TARGET_TIME = 1767744000  # Unix timestamp: 2026-01-07 00:00:00 UTC
+PASSWORD = "cunnucheomap"  # Mật khẩu để mở sớm
 
 # -----------------------------
 # Streamlit config
@@ -91,42 +92,29 @@ st.markdown("""
         border-radius: 5px;
         overflow: hidden;
     }
+    .password-box {
+        max-width: 400px;
+        margin: 30px auto;
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # Font chữ viết tay đẹp (Google Fonts)
 st.markdown('<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">', unsafe_allow_html=True)
 
+# -----------------------------
+# Kiểm tra thời gian và mật khẩu
+# -----------------------------
 current_time = int(datetime.utcnow().timestamp())
-remaining = TARGET_TIME - current_time
+time_reached = current_time >= TARGET_TIME
 
-if remaining < 0:
-    # Chưa đến ngày mở thư → Đếm ngược đẹp
-    days = remaining // 86400
-    hours = (remaining % 86400) // 3600
-    minutes = (remaining % 3600) // 60
-    seconds = remaining % 60
+# Sử dụng session_state để lưu trạng thái đã mở bằng password
+if 'unlocked' not in st.session_state:
+    st.session_state.unlocked = False
 
-    st.markdown(f"""
-    <div class="letter-container">
-        <h1 class="title">💌 Bức Thư Bí Mật</h1>
-        <p class="waiting-message">Em yêu dấu,</p>
-        <p class="waiting-message">Anh đã chuẩn bị một điều đặc biệt dành riêng cho em...</p>
-        <p class="waiting-message">Hãy chờ thêm chút nữa nhé ❤️</p>
-        <div class="countdown">
-            {days} ngày {hours:02d}:{minutes:02d}:{seconds:02d}
-        </div>
-        <p class="waiting-message">Thư sẽ mở đúng vào 0:00 ngày 7 tháng 1 năm 2026</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Auto refresh mỗi giây
-    import time
-    time.sleep(1)
-    st.rerun()
-
-else:
-    # Đã đến lúc → Hiển thị bức thư đẹp lung linh
+# Nếu đã unlock bằng password hoặc đã đến giờ → hiển thị thư
+if st.session_state.unlocked or time_reached:
+    # Hiển thị bức thư đầy đủ
     st.markdown("""
     <div class="letter-container">
         <h1 class="title">💌 Dành riêng cho em yêu của anh</h1>
@@ -180,3 +168,41 @@ Với tất cả tình yêu của anh,"""
         st.info("📸 Hãy thêm những bức ảnh đẹp nhất của chúng ta vào đây nhé...")
 
     st.markdown('</div>', unsafe_allow_html=True)  # Đóng letter-container
+
+else:
+    # Chưa đến giờ và chưa unlock → hiển thị màn hình chờ + ô nhập password
+    remaining = TARGET_TIME - current_time
+    days = remaining // 86400
+    hours = (remaining % 86400) // 3600
+    minutes = (remaining % 3600) // 60
+    seconds = remaining % 60
+
+    st.markdown(f"""
+    <div class="letter-container">
+        <h1 class="title">💌 Bức Thư Bí Mật</h1>
+        <p class="waiting-message">Em yêu dấu,</p>
+        <p class="waiting-message">Anh đã chuẩn bị một điều đặc biệt dành riêng cho em...</p>
+        <p class="waiting-message">Hãy chờ thêm chút nữa nhé ❤️</p>
+        <div class="countdown">
+            {days} ngày {hours:02d}:{minutes:02d}:{seconds:02d}
+        </div>
+        <p class="waiting-message">Thư sẽ mở đúng vào 0:00 ngày 7 tháng 1 năm 2026</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Ô nhập mật khẩu để mở sớm
+    st.markdown('<div class="password-box">', unsafe_allow_html=True)
+    password_input = st.text_input("Nếu em có mật khẩu đặc biệt, hãy nhập ở đây để mở thư ngay nhé 💕", type="password")
+    if st.button("Mở thư"):
+        if password_input.strip().lower() == PASSWORD.lower():
+            st.session_state.unlocked = True
+            st.success("Mật khẩu đúng! Đang mở bức thư cho em... ❤️")
+            st.rerun()
+        else:
+            st.error("Mật khẩu chưa đúng rồi, thử lại nhé em yêu 😘")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # Auto refresh mỗi giây để cập nhật countdown
+    import time
+    time.sleep(1)
+    st.rerun()
