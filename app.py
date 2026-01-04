@@ -150,22 +150,31 @@ Với tất cả tình yêu của anh,"""
     # Phần ảnh kỷ niệm
     st.markdown('<h2 style="text-align: center; color: #c0392b; font-family: Dancing Script, cursive; font-size: 36px; margin-top: 80px;">Kỷ niệm đẹp của chúng mình</h2>', unsafe_allow_html=True)
 
-    uploaded_files = st.file_uploader(
-        "",
-        type=["jpg", "jpeg", "png", "webp"],
-        accept_multiple_files=True,
-        label_visibility="collapsed"
-    )
+       # Phần ảnh kỷ niệm - HIỂN THỊ SẴN (không cần upload)
+    st.markdown('<h2 style="text-align: center; color: #c0392b; font-family: Dancing Script, cursive; font-size: 36px; margin-top: 80px;">Kỷ niệm đẹp của chúng mình</h2>', unsafe_allow_html=True)
 
-    if uploaded_files:
+    # Danh sách tên file ảnh bạn đã chuẩn bị sẵn (thêm/bớt tùy ý)
+    photo_files = [
+        "anh1.jpg",     # thay bằng tên file thật của bạn
+        "anh2.jpg",
+        "anh3.png",
+        "anh4.jpeg",
+        "anh5.webp",
+        # thêm bao nhiêu cũng được, chỉ cần file tồn tại trong thư mục
+    ]
+
+    if photo_files:
         st.markdown('<div class="photo-gallery">', unsafe_allow_html=True)
-        for file in uploaded_files:
-            st.markdown('<div class="photo-item">', unsafe_allow_html=True)
-            st.image(file, use_column_width=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+        for photo in photo_files:
+            try:
+                st.markdown('<div class="photo-item">', unsafe_allow_html=True)
+                st.image(photo, use_column_width=True)
+                st.markdown('</div>', unsafe_allow_html=True)
+            except:
+                pass  # nếu file không tồn tại thì bỏ qua, không lỗi
         st.markdown('</div>', unsafe_allow_html=True)
     else:
-        st.info("📸 Hãy thêm những bức ảnh đẹp nhất của chúng ta vào đây nhé...")
+        st.info("Chưa có ảnh kỷ niệm nào được thêm.")
 
     st.markdown('</div>', unsafe_allow_html=True)  # Đóng letter-container
 
