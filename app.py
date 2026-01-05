@@ -125,7 +125,6 @@ if 'unlocked' not in st.session_state:
 if st.session_state.unlocked or time_reached:
     # ==================== HIỂN THỊ BỨC THƯ ====================
     letter_content = """Anh tự hào về em,
-
 Từ rất lâu rồi, anh đã không còn viết thêm nhiều cho em, anh luốn muốn đợi đến lúc nào đó, tuy nhiên mọi thứ cứ có vẽ hơi quay cuồng nhiều lúc.
 
 Cảm ơn Cheo vì một năm qua đã ở bên mình, yêu thương mình hơn cả mình, cảm ơn đã quan tâm mình và lo cho mình nhiều đến vậy.
