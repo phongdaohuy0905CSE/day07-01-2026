@@ -41,7 +41,7 @@ st.markdown("""
     .title {
         font-family: 'Dancing Script', cursive;
         font-size: 52px;
-        color: #7f4f24;
+        color: #fffff;
         text-align: center;
         margin-bottom: 40px;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
