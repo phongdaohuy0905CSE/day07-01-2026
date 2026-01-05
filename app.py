@@ -126,15 +126,10 @@ if st.session_state.unlocked or time_reached:
     # ==================== HIỂN THỊ BỨC THƯ ====================
     letter_content = """Anh tự hào về em,
 Từ rất lâu rồi, anh đã không còn viết thêm nhiều cho em, anh luốn muốn đợi đến lúc nào đó, tuy nhiên mọi thứ cứ có vẽ hơi quay cuồng nhiều lúc.
-
 Cảm ơn Cheo vì một năm qua đã ở bên mình, yêu thương mình hơn cả mình, cảm ơn đã quan tâm mình và lo cho mình nhiều đến vậy.
-
 Anh tự hào về mọi thứ em đã, đang và mong muốn bản thân đạt được sắp đến, anh không còn nhiều thứ để dắt em, nhưng anh tin em sẽ cố gắng và làm được nó.
-
 Từ ngày có em mọi thứ đối với anh đã thay đổi nhiều, buồn vui có hạnh phúc cũng có đủ, mặc dù nhiều lúc hiểu lầm, tuy nhiên anh vẫn rất hạnh phúc vì tụi mình vẫn ở đây, vẫn bênh đây đến lúc này, cuộc sống chưa có vẻ sẽ nhẹ nhàng hơn, nhưng có em bên đời lại vui hơn.
-
 Cảm ơn mọi thứ đã mang em đến đây, cảm ơn mọi người đã thương hai đứa mình nhiều như vậy, mình biết mình còn chưa đủ gì để đáp lại tất cả sự yêu thương đó, nhưng mình vẫn đang cố gắng mỗi ngày, mong cho mọi người thân xung quanh chúng ta đều khỏe mạnh, đến lúc 2 đứa mình đền đáp được họ.
-
 Cuối cùng mình cảm ơn Cheo vì mọi thứ, yêu em mãi mãi"""
 
     edited_content = st.text_area("", value=letter_content, height=700, label_visibility="collapsed", key="letter_content")
