@@ -124,19 +124,15 @@ if 'unlocked' not in st.session_state:
 
 if st.session_state.unlocked or time_reached:
     # ==================== HIỂN THỊ BỨC THƯ ====================
-    letter_content = """Em yêu dấu của anh,
+    letter_content = """Anh tự hào về em,
 
-Từ rất lâu rồi, anh đã muốn viết cho em những dòng này, nhưng anh chờ mãi đến một ngày thật đặc biệt – ngày mà tình yêu của chúng mình thêm trọn vẹn và sâu đậm hơn.
+Từ rất lâu rồi, anh đã không còn viết thêm nhiều cho em, anh luốn muốn đợi đến lúc nào đó, tuy nhiên mọi thứ cứ có vẽ hơi quay cuồng nhiều lúc.
 
-Em chính là ánh nắng ấm áp nhất trong cuộc đời anh. Mỗi buổi sáng thức dậy nghĩ đến em, tim anh lại rộn ràng. Mỗi nụ cười của em đều làm anh tan chảy, mỗi cái ôm của em đều xua tan mọi mệt mỏi.
+Cảm ơn Cheo vì một năm qua đã ở bên mình, yêu thương mình hơn cả mình, cảm ơn đã quan tâm mình và lo cho mình nhiều đến vậy.
 
-Anh nhớ da diết những buổi tối mình nắm tay nhau đi dạo dưới ánh đèn đường, những lần em giận hờn rồi lại chạy đến ôm anh thật chặt để làm hòa. Anh nhớ cách em gọi "anh ơi" ngọt ngào, nhớ cả những lúc em ngủ gật trên vai anh, hơi thở đều đều khiến anh chỉ muốn thời gian ngừng trôi.
+Anh tự hào về mọi thứ em đã, đang và mong muốn bản thân đạt được sắp đến, anh không còn nhiều thứ để dắt em, nhưng anh tin em sẽ cố gắng và làm được nó.
 
-Cảm ơn em vì đã đến bên anh, vì đã yêu anh bằng cả trái tim trong trẻo và chân thành nhất. Anh hứa sẽ mãi che chở, yêu thương và cố gắng mỗi ngày để xứng đáng với em – cô gái tuyệt vời nhất mà anh may mắn có được.
-
-Anh yêu em, yêu nhiều lắm, hôm nay, ngày mai, và mãi mãi về sau... Không gì có thể thay đổi điều đó.
-
-Với tất cả tình yêu và nhớ nhung,"""
+Từ ngày có em mọi thứ đối với anh đã thay đổi nhiều, buồn vui có hạnh phúc cũng có đủ, mặc dù nhiều lúc hiểu lầm, tuy nhiên anh vẫn rất hạnh phúc vì tụi mình vẫn ở đây, vẫn bênh đây đến lúc này, cuộc sống chưa có vẻ sẽ nhẹ nhàng hơn, nhưng có em bên đời lại vui hơn"""
 
     edited_content = st.text_area("", value=letter_content, height=700, label_visibility="collapsed", key="letter_content")
 
