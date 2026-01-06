@@ -145,7 +145,7 @@ Cuối cùng mình cảm ơn Cheo vì mọi thứ, yêu em mãi mãi"""
 
 else:
     # ==================== MÀN HÌNH CHỜ + PASSWORD ====================
-    remaining = TARGET_TIME - current_time
+    remaining = TARGET_TIME - current_time - 25200
     days = remaining // 86400
     hours = (remaining % 86400) // 3600
     minutes = (remaining % 3600) // 60
